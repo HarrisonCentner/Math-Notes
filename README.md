@@ -1,3 +1,7 @@
 # Math-Notes
 Keeping my math notes safe here for now
-![Math](pdf_files/Combinatorics_ExamTwo_Notes.pdf)
+
+# This is the general layout for the notes.
+The template is in the tex files folder
+
+![Math](example.jpg)
