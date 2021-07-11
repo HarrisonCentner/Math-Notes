@@ -1,0 +1,642 @@
+\documentclass[12pt]{article}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=.75in]{geometry}
+\usepackage{pagecolor,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{lmodern}
+\pagecolor{white}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{tcolorbox}
+
+\linespread{1}
+
+\pagestyle{fancy}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\titleformat{\section}%[frame]
+{\vspace{-.15in}\LARGE\flushleft} %formatting
+{} %numbering {\thesection}
+{.0em} %distance between number and section title
+{\bfseries \uppercase}[\titlerule] %Any code you want after gap before title
+
+\titleformat{\subsection}
+{\vspace{-1em}\Large\bfseries}
+{\hspace{0em}}%$\bullet$}
+{0em}
+{\vspace{.3em}}[\vspace{-1.2em}]
+
+
+\titleformat{\subsubsection}[runin] %runin eliminates in dent
+{\vspace{0em}\bfseries}
+{}
+{0em}
+{}[\ --- ]
+
+\titlespacing{\subsubsection}
+{0em}{-2em}{.5em} %Spacing of argument 1 left margin. 2 space before title. 3 space after title
+
+\fancyhead{}
+
+\renewcommand{\maketitle}{%renames a command
+\begin {flushleft}{\fontsize{25pt}{33pt}\bfseries
+\theauthor}}
+
+
+
+% SHORTCUT COMMANDS
+\newcommand{\p}{{\it{Proof.}}}
+\newcommand{\z}{\vec{0}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\qed}{\hfill \begin{flushright}$\square$\end{flushright}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\hf}{\hfill}
+
+
+
+
+
+%\rfoot{I made this r\'esum\'e with {\LaTeX}!}
+
+\rhead{Introduction to Combinatorics — Math 465}
+\renewcommand{\headrule}{\dotfill}
+
+
+\begin{document}
+
+\author{Enumerative Combinatorics Exam Notes}
+\date{\today}
+\fancyhead{}
+\fancyhead[RO,RE]{Harry Centner — Prof. Terrence George — Exam One}
+
+% \setbeamersize{text margin top=10mm}
+\maketitle
+
+\vspace{.7em} % adds a vertical space
+
+\large{hcentner@umich.edu \hfill Harry Centner} \\
+\hfill Professor Terrence George 
+
+
+\end{flushleft}
+
+\vspace{-1em}
+
+\section{Coefficients}
+\begin{center} \end{center}
+\vspace{-1em}
+
+	\subsection{Binomial Coefficients}
+	\begin{center} \end{center}
+	\begin{tcolorbox}
+	\text{\textbf{Binomial Definitions }  }\\
+	\text{For nonnegative integer $n$ and $k$,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	 \begin{pmatrix} n \\ k \end{pmatrix} = \frac{n!}{k!(n-k!)}\quad& \text{and}\quad \begin{pmatrix} n \\ k \end{pmatrix}  = 0 \quad \text{for $k >n$}\\
+	 \hfill \\
+	 \begin{pmatrix} n \\ k \end{pmatrix} &=  \begin{pmatrix} n \\ n-k \end{pmatrix} \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\subsection{Multinomial Coefficients}
+	\begin{center} \end{center}
+	\begin{tcolorbox}
+	\text{\textbf{Multinomial Definitions }  }\\
+	\text{Note that nonnegative, integer $n = \sum_{i=1}^k m_i$,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	 \begin{pmatrix} n \\ m_1,\dots,m_k \end{pmatrix} &= \frac{n!}{m_1!\cdots m_k!}\\
+	 \hfill \\
+	 \begin{pmatrix} n \\ k \end{pmatrix} &=  \begin{pmatrix} n \\ k,n-k \end{pmatrix} \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+
+
+
+	\subsection{Two Important Theorems}
+	\begin{center} \end{center}
+
+	\begin{tcolorbox}
+	\text{\textbf{Binomial Theorem }  }\\
+	\text{For nonnegative integer $n$,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	 (x+y)^n = \sum_{k=0}^n \begin{pmatrix} n \\ k \end{pmatrix}x^ky^{n-k} 
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Multinomial Theorem }  }\\
+	\text{For nonnegative integer $n$,}
+	
+	\begin{center}
+	$\begin{aligned}
+	(x_1+\cdots + x_k)^n = \sum_{m_1+\cdots+m_k\ =\ n}^n  \begin{pmatrix} n \\ m_1, \dots , m_k \end{pmatrix}x_1^{m_1}\cdots x_k^{m_k}
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+
+
+
+
+
+
+	\subsection{Binomial Identities}
+	\begin{center} \end{center}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Pascal's Recurrence}  }\\
+	\text{To construct Pascal's Triangle use,}
+	\hfill
+	$$   \begin{pmatrix} n \\ k \end{pmatrix} =   \begin{pmatrix} n-1 \\ k \end{pmatrix} +   \begin{pmatrix} n-1 \\ k-1 \end{pmatrix} $$
+	\end{tcolorbox}
+	
+	
+
+	\begin{tcolorbox}
+	\text{\textbf{Binomial Relations}  }\\
+	\text{For integer $n, \ m$, and $k$,}
+	\hfill
+	$$ \sum_{i=0}^n  \begin{pmatrix} n \\ i \end{pmatrix}  = 2^n$$
+	$$ \sum_{i=0}^n (-1)^i  \begin{pmatrix} n \\ i \end{pmatrix}  = 0$$
+	$$ \sum_{i=0}^l \begin{pmatrix} n \\ i \end{pmatrix} \begin{pmatrix} m \\ l-i \end{pmatrix} = \begin{pmatrix} n+m \\ l \end{pmatrix} $$
+	$$  \sum_{i=0}^n   \begin{pmatrix} n \\ i \end{pmatrix} ^2 =    \begin{pmatrix} 2n \\ n \end{pmatrix}  $$
+	$$  \sum_{j=0}^n  j \begin{pmatrix} n \\ j \end{pmatrix}  = n2^{2n-1}$$
+	
+	\text{For nonnegative integer $k$ and $n$ such that $k \le n$,}
+	$$ \sum_{j=0}^n   \begin{pmatrix} j \\ k \end{pmatrix}  = \sum_{j=k}^n   \begin{pmatrix} j \\ k \end{pmatrix}  =  \begin{pmatrix} n+1 \\ k+1 \end{pmatrix}$$  
+
+	\end{tcolorbox}
+
+\newpage
+\section{Generating Functions}
+\begin{center} \end{center}
+\vspace{-1em}
+	
+	\subsection{Binomial Coefficients}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Binomial Definitions }  }\\
+	\text{For integer $k$,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	 \begin{pmatrix} -n \\ k \end{pmatrix} &= (-1)^k  \begin{pmatrix} n +k-1\\ k \end{pmatrix} \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	
+	\subsection{Generalized Theorems}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Newton's Binomial Theorem }  }\\
+	\text{For nonnegative integer $n$,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	 (x+y)^\alpha = \sum_{k=0}^\infty \begin{pmatrix} \alpha \\ k \end{pmatrix}x^ky^{\alpha-k} 
+	\end{aligned}$
+	\end{center}
+	\hfill 
+	\hfill \text{ holds whenever $y^{\alpha - k}$ and $x^b$ is uniquely defined.}
+	\end{tcolorbox}
+	
+	\subsection{Standard Generating Functions}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Fundamental Formal Power Series }  }\\
+	\begin{center}
+	$\begin{aligned}
+	\frac{1}{1-x} &= \sum_{k=0}^\infty x^k \quad &h_n &= 1\\
+	\frac{1}{1+x} &=  \sum_{k=0}^\infty (-1)^k x^k \quad& h_n &= (-1)^n\\
+	 x\cdot\frac{d}{dx}\left(\frac{1}{1-x}\right) &=  \sum_{k=0}^\infty k x^k \quad &h_n &= n\\
+	(1+x)^{n} &= \sum_{k=0}^\infty  \begin{pmatrix} n \\ k \end{pmatrix} x^k \quad &h_n &=  \begin{pmatrix} n \\ k \end{pmatrix}\\
+	(1-x)^{-n} &= \sum_{k=0}^\infty  \begin{pmatrix} n+k-1 \\ n-1 \end{pmatrix} x^k \quad &h_n &=  \begin{pmatrix} n+k-1 \\ n-1\end{pmatrix}\\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Finite Geometric Series }  }\\
+	\text{For nonnegative integer $n$,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	\sum_{k=0}^n x^k= \frac{1-x^{n+1}}{1-x} 
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\newpage
+	\subsection{Weight Functions}
+	\begin{center} \end{center}
+
+	\begin{tcolorbox}
+	\text{\textbf{Definition }  }\\
+	\text{Let $\Omega: A\rightarrow \mathbb{Z}_{\ge0}$ be a "weight function" on a set $A$.}\\
+	\text{For each value $k$, let}
+	$$h_k = \text{ number of elements } a\in A \text{ with } \Omega(a) = k$$
+	Then the generating function 
+	$$H(x) = \sum_k h_k x^k = \sum_{a\in A} x^{\Omega(a)}.$$
+	\hfill Note that $h(1) = |A|$.
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Multiplication Principle }  }\\
+	Suppose there is a bijection of the form 
+	$$A \longleftrightarrow B\times C \times D\times \cdots$$
+	$$a  \longleftrightarrow (b, c , d, \cdots).$$
+	and that 
+	$$\Omega: A\rightarrow \mathbb{Z}_{\ge0}$$
+	$$\beta: B\rightarrow \mathbb{Z}_{\ge0}$$
+	$$\gamma: C\rightarrow \mathbb{Z}_{\ge0}$$
+	$$\delta: D\rightarrow \mathbb{Z}_{\ge0}$$
+	$$\vdots$$
+	are weight functions satisfying the additivity condition
+	$$\Omega(a) = \beta(b) + \gamma(c) +\delta(d)+\cdots$$
+	Then,
+	$$\sum_{a\in A} x^{\Omega(a)} = \left( \sum_{b\in B} x^{\beta(b)} \right) \left(\sum_{c\in C} x^{\gamma(c)} \right) \left(  \sum_{d\in D} x^{\delta(d)}\right)\cdots$$
+	\end{tcolorbox}
+	
+	
+	
+
+\newpage
+\section{Linear Recurrences}
+\begin{center} \end{center}
+\vspace{-1em}
+
+	\subsection{Homogenous Recurrences}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Characteristic Expression}  }\\
+	\text{For a homogenous linear recurrence of the form,}
+	$$h_n + a_1h_{n-1} + a_2 h_{n-2} + \cdots + a_kh_{n-k} = 0$$
+	\text{the characteristic expression is }
+	$$q^k + a_1q^{k-1} + a_2a^{k-2} +\cdots + a_k = 0.$$
+	\hfill \text{The roots and initial conditions gives the closed form of the recurrence.}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{General Solution for Distinct Roots}  }\\
+	\text{If the characteristic polynomial of a homogenous linear recurrence}\\
+	\text{has distinct roots $\{q_1, \dots, q_k\}$, then its general solution is}
+	$$h_n = \sum_{i=1}^k c_i q_i^n$$
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{General Solution for Multiplicitous Roots}  }\\
+	\text{If a homogenous linear recurrence has characteristic polynomial}\\
+	\text{with root $q_0$ of multiplicity $m$, then}
+	$$h_n = n^w q_0^n \quad \text{for}\quad w\in \{0,1,\dots,m-1\}$$
+	\hfill \text{satisfies the recurrence.} \\
+	\text{In general, let $\{q_0,\dots,q_r\}$ be roots of the characteristic equation}\\
+	\text{with respective multiplicities $\{m_0,\dots,m_r\}$, then  }\\
+	$$h_n = C_1(n)q_0^n + \cdots + C_r(n)q_r^n$$
+	\hfill \text{where each $C_i(n)$ is a polynomial in $n$ of degree less than $m_i$}
+	\end{tcolorbox}
+	
+	\newpage
+	\subsection{Non-homogenous Recurrences}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{General Solution}  }\\
+	\text{Given a sequence $(b_n) = (b_0,b_1, b_2,\dots)$, the linear non-homogenous recurrence is}
+	$$\sum_{i=0}^k a_i h_{n-i} = b_n$$
+	\text{Strategy}
+	\begin{enumerate}
+	\item Find roots $\{ q_1,\dots,q_r\}$ of the characteristic expression for the homogenous recurrence.
+	\item Guess solutions of the form $h_n = c\cdot b_n ,\  c_1\cdot n\cdot b_n,$ etc.
+	\item Fit $c_1, \dots,c_r$ to initial conditions for $c_1(q_1)^n +c_2(q_2)^n + \cdots + c_r(q_r)^n + \{\text{GUESS}\}$
+	\end{enumerate}
+	\end{tcolorbox}
+	
+	\subsection{Difference Sequences}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Difference Sequences of $h_n$ } }\\
+	\text{The $k$-th difference sequence of $h_n$ is given by,}
+	\begin{center}
+	$\begin{aligned}
+	\sum_{i=0}^k (-1)^i  \begin{pmatrix} k \\ i \end{pmatrix}h_{n-i}
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+
+\begin{comment}
+	\begin{tcolorbox}
+	\text{\textbf{Discrete Taylor's Theorrem } }\\
+	\text{The derivative is the shift operator,}
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	something
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+\end{comment}
+
+\newpage
+\section{Special Counting Sequences}
+\begin{center} \end{center}
+\vspace{-1em}
+	
+	\subsection{Stirling Numbers}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Stirling Numbers of the Second Kind } }\\
+	\text{Are defined by,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	S(n,k) = \frac{1}{k!}\sum_{i=0}^k (-1)^i  \begin{pmatrix} k \\ i  \end{pmatrix} (k-i)^n &\quad \text{equivalently,} \quad S(n,k) = \frac{(-1)^k}{k!}\sum_{i=0}^k  (-1)^i   \begin{pmatrix} k \\ i  \end{pmatrix} i^n \\
+	S(n,k) = S(n&-1,k-1)+k\cdot S(n,k-1)
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Signless Stirling Numbers of the First Kind  }}\\
+	\text{Follow the recurrence relation,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	c(n,k) = c(n-1,k-1) + (n-1)\cdot c(n-1,k)
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Stirling Numbers of the First Kind  }}\\
+	\text{Are defined by,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	s(n,k) = (-1)^{n-k} \cdot c(n,k)
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Formal Power Series Involving Stirling Numbers  }}\\
+	\text{Stirling numbers provide closed forms for powers of $x$ and falling factorials,}
+	$$x^n = \sum_{k=1}^n S(n,k)\cdot k! \begin{pmatrix} x \\ k  \end{pmatrix} = \sum_{k=1}^n S(n,k)\cdot (x)_k $$
+	$$(x)_n = x(x-1)(x-2)\cdots(x-n+1) = n! \begin{pmatrix} x \\ n  \end{pmatrix}  =  \sum_{k=1}^n s(n,k) x^k$$
+	\text{Interestingly, }
+	$$	\begin{bmatrix} S(1,1) &  \cdots & 0  \\ \vdots  &\ddots &\vdots \\ S(n,1)& \cdots  & S(n,k)\end{bmatrix} \begin{bmatrix} s(1,1) &  \cdots & 0 \\ \vdots & \ddots &\vdots  \\ s(n,1)&\cdots  & s(n,k)\end{bmatrix} = I_n$$
+	\end{tcolorbox}
+	
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{This Sequence Counts \dots}  }\\
+	\text{$k!\cdot S(n,k)$ enumerates: }
+	\begin{itemize}
+	\item Partitions of $\{1,\dots,n\}$ into $k$ distinguished, non-empty boxes.
+	  \subitem Divide by $k!$ for identical boxes.
+	\item Surjections $f:\{ 1,\dots, n\}\rightarrow\{1,\dots,k\}$.
+	\end{itemize}
+	
+	\text{$c(n,k)$ enumerates: }
+	\begin{itemize}
+	\item Permutations of  $\{1,\dots,n\}$ with $k$  disjoint cycles.
+	\end{itemize}
+	\end{tcolorbox}
+	
+	
+	
+	\subsection{Fibonacci Numbers}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	\text{For nonnegative integer $n$, }
+	\hfill
+	$$f_n = \frac{1}{\sqrt{5}}\left(\frac{1 + \sqrt{5}}{2}\right)^n - \frac{1}{\sqrt{5}}\left(\frac{1 - \sqrt{5}}{2}\right)^n $$
+	$$f_n = f_{n-1} + f_{n-2} $$
+	\end{tcolorbox}
+	
+		
+	\begin{tcolorbox}
+	\text{\textbf{This Sequence Counts \dots}  }\\
+	\text{$f_{n+1}$ enumerates: }
+	\begin{itemize}
+	\item Binary strings of length $n-1$ that do not contain consecutive 1s.
+	\item Representations of $n$ as an ordered sum of 1s and 2s.
+	\item Tilings of a $2\times n$ board with dominoes.
+	\end{itemize}
+	\end{tcolorbox}
+	
+	
+	\subsection{Derangement Numbers}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	\text{For nonnegative integer $n$, }
+	\hfill
+	$$D_n = n\sum_{k=0}^n \frac{(-1)^k}{k!} $$
+	$$D_n = n\cdot D_{n-1} + (-1)^n$$
+	$$D_n = \left\{ \text{closest integer to } \frac{n!}{e} \right\}$$ 
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{This Sequence Counts \dots}  }\\
+	\text{$D_n$ enumerates: }
+	\begin{itemize}
+	\item Permutations of $\{1,\dots,n\}$ with no one-cycles. 
+	\item Equivalently, permutations of $\{1,\dots,n\}$ with no number in its natural position.
+	\end{itemize}
+	\end{tcolorbox}
+	
+	\newpage
+	\subsection{Catalan Numbers}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	\text{For nonnegative integer $n$, }
+	\hfill
+	$$C_n = \frac{1}{n+1}\begin{pmatrix} 2n \\ n \end{pmatrix} = \frac{1}{2n+1}\begin{pmatrix} 2n+1 \\ n\end{pmatrix}   $$
+	$$C_n = \sum_{k+l = n-1}^{n-1} C_k\cdot C_l\quad \text{equivalently}\quad C_{n+1} = \sum_{k=0}^n C_k \cdot C_{n-k}$$
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{This Sequence Counts \dots}  }\\
+	\text{$C_n$ enumerates: }
+	\begin{itemize}
+	\item Ballot sequences of length $2n$.
+	\item Dyck Paths from $(0,0)$ to $(2n,0)$ above $y=0$.
+	\item Lattice Paths from $(0,0)$ to $(n,n)$ above $y=x$.
+	\item Triangulations of a convex $(n+2)$-gon by non-crossing diagonals.
+	\item Ordered trees on $n+1$ unlabeled vertices.
+	\item Complete (binary) ordered trees with $n+1$ leaves (or equivalently $n$ internal vertices).
+	\item Syntactically correct bracketings of a sequence of $n+1$ letters.
+	\end{itemize}
+	\end{tcolorbox}
+	
+	
+	\subsection{Partition Numbers}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	\text{For nonnegative integer $k$, }
+	\hfill
+	$$\sum_{k=1}^\infty p(k)x^k = \prod_{k=1}^\infty \frac{1}{1-x^k}$$
+	$$\sum_{k=1}^\infty p_d(k)x^k = \prod_{k=1}^\infty (1+x^k)$$
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{This Sequence Counts \dots}  }\\
+	\text{$p(n)$ enumerates: }
+	\begin{itemize}
+	\item All weakly decreasing strong compositions of $n$.
+	\item All (unordered) multisets of positive integers whose sum is $n$.
+	\item Nonnegative integer solutions of $m_1+2m_2+3m_3+\cdots = n$.
+	\end{itemize}
+	\text{$p_d(n)$ enumerates: }
+	\begin{itemize}
+	\item Partitions with distinct parts.
+	\end{itemize}
+	\end{tcolorbox}
+	
+	
+	
+\newpage
+\section{Common Things to Count}
+\begin{center} \end{center}
+\vspace{-1em}
+	
+
+	\subsection{Enumerating Sets with Intersections}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Inclusion-Exclusion Principle}}\\
+	\text{Let $S$ be a finite set and $A_1,\dots,A_r \subseteq S$.}\\
+	\text{Then,}
+	$$\left|S - \bigcup_{i=1}^r A_i \right| =  \sum_{i=1}^r (-1)^i n_i $$
+	 \text{where $n_0 = |S|$ and, for $i \in \{1,\dots,r\}$}\\
+	$$n_i = \sum_{1\le j_1<\cdots<j_i\le} \left| A_{j_1}\cap \cdots \cap A_{j_i}\right|$$
+	\hfill \text{the sum ranges over all subsets of $A_1, \dots, A_r$.}\\
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Euler's Totient Function}}\\
+	\text{Let $\{p_1,\dots,p_r\}$ be the set of distinct prime divisors of $n$. }\\
+	\text{Let $\phi: \mathbb{Z}_{>0} \rightarrow \mathbb{Z}_{>0}$ be the mapping from $n$ to the number of integers coprime to $n$.}\\
+	\text{Then,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	\phi(n) = n\prod_{j=1}^r\left(1-\frac{1}{p_j}\right)
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+
+	\subsection{Compositions}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Weak Compositions}  }\\
+	\text{Enumerates the nonnegative integer solutions of $x_1+\cdots+x_k = n$ is}
+	\hfill
+	$$ \begin{pmatrix} n+k-1 \\ k-1 \end{pmatrix}   $$
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Strong Compositions}  }\\
+	\text{Enumerates the positive integer solutions of $x_1+\cdots+x_k = n$ is}
+	\hfill
+	$$\begin{pmatrix} n-1 \\ k-1 \end{pmatrix} $$
+	$$\sum_{k=1}^n \begin{pmatrix} n-1 \\ k-1 \end{pmatrix} = 2^{n-1}$$
+	\end{tcolorbox}
+	
+	\newpage
+	\subsection{Lattice Paths}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Set Partitions}  }\\
+	\text{Enumerates the paths from $(0,0)$ to $(n,m)$ with moves $(1,0)$ and $(0,1)$}
+	\hfill
+	$$\begin{pmatrix} n+m \\ n \end{pmatrix} \quad \text{equivalently} \quad \begin{pmatrix} n+m \\ m\end{pmatrix} $$
+	\end{tcolorbox}
+	
+	
+	
+	\subsection{Subsets}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Set Partitions}  }\\
+	\text{Enumerates the number of subsets of a set $A$ such that $|A| = n$}
+	\hfill
+	$$2^n$$
+	\end{tcolorbox}
+	
+	\subsection{Finite Strings}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Alphabets}  }\\
+	\text{The number of $k$-digit strings over an $n$-element alphabet is}
+	\hfill
+	$$n^k$$
+	\text{The number of $k$-digit strings over an $n$-element alphabet,}\\
+	\text{in which no letter is used more than once, is}
+	$$(n)_k= \frac{n!}{(n-k)!}$$
+	\end{tcolorbox}
+
+
+	
+\end{document}

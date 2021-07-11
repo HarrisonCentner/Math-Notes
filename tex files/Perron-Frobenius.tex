@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=.75in]{geometry}
+\usepackage{pagecolor,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{lmodern}
+\pagecolor{white}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{tcolorbox}
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\graphicspath{ {\string~/Desktop/LaTeX_Things/} }
+
+
+
+\linespread{1}
+
+\pagestyle{fancy}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\titleformat{\section}%[frame]
+{\vspace{-.15in}\LARGE\center} %formatting
+{} %numbering {\thesection}
+{.0em} %distance between number and section title
+{\bfseries \uppercase}[\titlerule] %Any code you want after gap before title
+
+\titleformat{\subsection}
+{\vspace{-.4em}\Large\bfseries}
+{\hspace{0em}}%$\bullet$}
+{0em}
+{\vspace{.3em}}[\vspace{-.25em}]
+
+
+\titleformat{\subsubsection}[runin] %runin eliminates in dent
+{\vspace{.1em}\bfseries}
+{}
+{0em}
+{}[\ --- ]
+
+\titlespacing{\subsubsection}
+{0em}{-2em}{.5em} %Spacing of argument 1 left margin. 2 space before title. 3 space after title
+
+\fancyhead{}
+
+\renewcommand{\maketitle}{%renames a command
+\begin {center}{\fontsize{25pt}{33pt}\bfseries
+\theauthor}}
+
+
+
+% SHORTCUT COMMANDS
+\newcommand{\p}{{\it{Proof.}}}
+\newcommand{\z}{\vec{0}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\qed}{\hfill \begin{flushright}$\square$\end{flushright}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\hf}{\hfill}
+
+
+
+
+
+%\rfoot{I made this r\'esum\'e with {\LaTeX}!}
+
+\rhead{Linear Algebra — Math 217}
+\renewcommand{\headrule}{\dotfill}
+
+
+\begin{document}
+
+\author{DRP Application Response}
+\date{\today}
+\fancyhead{}
+\fancyhead[RO,RE]{\small{Harry Centner $\bullet$ DRP Application Response $\bullet$ hcentner@umich.edu $\bullet$ (616)551-8099 $\bullet$ \today}}
+
+% \setbeamersize{text margin top=10mm}
+
+
+
+
+
+
+ 
+
+
+
+\vspace{1em}
+\begin{center}
+\section{Perron-Frobenius Theorem}\end{center}
+\begin{center} I first learned about Perron Frobenius Theory from "My Favorite Theorem" a maths podcast.\\ It immediately peaked my interest since I was enrolled in Math 217 at the time.  \end{center}
+
+\begin{tcolorbox}
+	\begin{flushleft} Let $A \in \R^{n \times n}$ be a matrix such that all entries are positive. Then the following hold: \end{flushleft}
+	\begin{enumerate}
+	\item $A$ has a unique positive eigenvalue $\rho(A)$ whose eigenspace is one dimensional.
+	\item  There exists a corresponding eigenvector $\vec{x}$ of $\rho(A)$ such that $\rho(A)\vec{x}$ has all positive entries.
+	\item The spectral radius of $A$ is $\rho(A)$. Namely, $|\rho(A) | > |\lambda_i|$ for all other eigenvalues of $A$.
+	\end{enumerate}
+\end{tcolorbox}
+	
+	\p \ \ I am unaware of a short proof for the whole theorem, so I will prove (2) and (3) in the Reals. 
+	
+	Let $A$ be a matrix such that every entry $a_{ij} > 0 $.\\ 
+	We want to show that  $A\vec{x} = \rho(A)\vec{x}$ is strictly positive for some nonnegative $\vec{x} \ne \z$. 
+	
+	\quad First, observe all numbers $c$ such that $A\vec{x} \ge c\vec{x}$. Thus, there are many small positive values of $c$. Additionally, there is a largest value attained, which we denote $c_{\text{max}}$. We will show $A\vec{x} = c_{\text{max}}\vec{x}$. \\
+	Assume for the sake of contradiction that $A\vec{x} \ge c_{\text{max}}\vec{x}$ is not an equality. \\
+	Multiply by $A$; since $A$ is positive (and $\vec{x} \ne \z$), this produces a strict inequality: $A^2\vec{x} > c_{\text{max}}A\vec{x}$. \\
+	 Then $\vec{y} = A\vec{x}$ satisfies $A\vec{y} > c_{\text{max}}\vec{y}$, and consequently $c_{\text{max}}$ could still be increased. \\
+	 $\therefore$ The assumption that $A\vec{x} \ne c_{\text{max}}\vec{x}$ is false. \\ 
+	 We conclude that $c_{\text{max}}$ is an eigenvalue and $\vec{x}$ is entry-wise positive since $A\vec{x}$ must be positive. 
+	
+	\quad Second, we note that $c_{\text{max}}$ is the largest eigenvalue.  \\
+	Let $\lambda$ be some other eigenvalue and $\vec{z}$ its corresponding eigenvector, we have $A\vec{z} = \lambda\vec{z}$. \\
+	Because $\lambda$ or $\vec{z}$ may have negative entries, take absolute values: $|\lambda| | \vec{z} | = |A\vec{z}| \le A|\vec{z}|$. \\
+	But since $|\vec{z}|$ is a nonnegative vector, $|\lambda|$ could have been $c$. \\
+	$\therefore$ by the previous paragraph $|\lambda|$ is not greater than $c_{\text{max}}$. \\
+	We conclude that $c_{\text{max}}$ is the greatest eigenvalue and the spectral radius of $A$. 
+	\\
+	\null \hfill $\square$
+	
+	\dotfill
+	
+	\quad Frankly, the statement of the theorem is rather bland. But its implications are awesome! For example, one corollary is that every Markov Matrix has only ONE eigenvalue of 1, which dominates the long term behavior of the system. This is how Google made millions of dollars: (1) create a Markov Matrix generated from random walks on the internet, (2) iterate this matrix many times, (3) end up with an eigenvector of positive probabilities and a page rank formula.
+	
+	\quad This is one aspect of Math that I love. Hidden in the annals of math are secrets to Horse-Race gambling, new computing techniques, and making Earth a better place! One thing I've learned from my Linear Algebra class is that math can always be made exciting, for some people that's in the rigor and others the applications. 
+	
+	\quad I'm very interested in the foundations of mathematics, explicitly Type Theory. I listened to a talk online from Emily Riehl about the Homotopy interpretation of Type Theory, which fascinated me. If accepted to the DRP program I hope to study Type Theory and work with Computer Assisted Proof languages like Lean.
+	
+%	\subsection{Corallary}
+%	\begin{flushleft} Let $M$ be a Markov Matrix (every entry of $A$ is positive and every column of $A$ sums to 1). \\Then $\rho(M) = 1$, and all other eigenvalues are less than one. Therefore, there is a unique equilibrium $\vec{x}$ which is the  eigenvector associated with $\rho(M)$. \end{flushleft}
+
+
+%	I do not understand the Brouwer Fixed Point Theorem—although I hope to in the near future. Similarly, no one person can understand all of mathematics, which is why I see a need for Computer Assisted Proofs. 
+
+
+\end{document}
+	
+	
+	

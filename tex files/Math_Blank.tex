@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=.75in]{geometry}
+\usepackage{pagecolor,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{lmodern}
+\pagecolor{white}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{comment}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\graphicspath{ {\string~/Desktop/LaTeX_Things/} }
+
+
+
+\linespread{1}
+
+\pagestyle{fancy}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\titleformat{\section}%[frame]
+{\vspace{-.15in}\LARGE\flushleft} %formatting
+{} %numbering {\thesection}
+{.0em} %distance between number and section title
+{\bfseries \uppercase}[\titlerule] %Any code you want after gap before title
+
+\titleformat{\subsection}
+{\vspace{-.4em}\Large\bfseries}
+{\hspace{0em}}%$\bullet$}
+{0em}
+{\vspace{.3em}}[\vspace{-.25em}]
+
+
+\titleformat{\subsubsection}[runin] %runin eliminates in dent
+{\vspace{.1em}\bfseries}
+{}
+{0em}
+{}[\ --- ]
+
+\titlespacing{\subsubsection}
+{0em}{-2em}{.5em} %Spacing of argument 1 left margin. 2 space before title. 3 space after title
+
+\fancyhead{}
+
+\renewcommand{\maketitle}{%renames a command
+\begin {flushleft}{\fontsize{25pt}{33pt}\bfseries
+\theauthor}}
+
+
+
+% SHORTCUT COMMANDS
+\newcommand{\p}{{\it{Proof.}}}
+\newcommand{\z}{\vec{0}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\qed}{\hfill \begin{flushright}$\square$\end{flushright}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\hf}{\hfill}
+
+
+
+
+
+%\rfoot{I made this r\'esum\'e with {\LaTeX}!}
+
+\rhead{Introduction to Combinatorics— Math 465}
+\renewcommand{\headrule}{\dotfill}
+
+
+\begin{document}
+
+\author{Problem Set 1}
+\date{\today}
+\fancyhead{}
+\fancyhead[RO,RE]{Harry Centner — Prof. Terrence George — HW 1}
+
+% \setbeamersize{text margin top=10mm}
+\maketitle
+
+\vspace{.7em} % adds a vertical space
+
+\large{hcentner@umich.edu \hfill Harry Centner} \\
+\hfill Professor Terrence George 
+
+
+\end{flushleft}
+
+
+
+\section{Homework One}
+	\subsection{Problem One}
+	\begin{center} \end{center}
+	\subsection{Part A}
+	\begin{center} \end{center}
+	
+\section{Homework Two}
+	\subsection{Problem One}
+	\begin{center} \end{center}
+	
+
+	\subsection{Problem Two}
+	\begin{center} \end{center}
+
+
+	\subsection{Problem Three}
+	\begin{center} \end{center}
+
+	
+	\subsection{Problem Four}
+	\begin{center} \end{center}
+
+	\subsection{Problem Five}
+	\begin{center} \end{center}
+
+
+	\subsection{Problem Six}
+	\begin{center} \end{center}
+
+	\subsection{Problem Seven}
+	\begin{center} \end{center}
+
+	\subsection{Problem Eight}
+	\begin{center} \end{center}
+
+	\subsection{Problem Nine}
+	\begin{center} \end{center}
+
+	\subsection{Problem Ten}
+	\begin{center} \end{center}
+
+
+	
+
+
+\end{document}
+	

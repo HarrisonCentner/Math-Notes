@@ -1,0 +1,531 @@
+\documentclass[12pt]{article}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=.75in]{geometry}
+\usepackage{pagecolor,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{lmodern}
+\pagecolor{white}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{tcolorbox}
+
+\linespread{1}
+
+\pagestyle{fancy}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\titleformat{\section}%[frame]
+{\vspace{-.15in}\LARGE\flushleft} %formatting
+{} %numbering {\thesection}
+{0em} %distance between number and section title
+{\bfseries \uppercase}[\titlerule ] %Any code you want after gap before title
+
+\titleformat{\subsection}
+{\vspace{-1em}\Large\bfseries}
+{\hspace{0em}}%$\bullet$}
+{0em}
+{\vspace{.3em}}[\vspace{-1.2em}]
+
+
+\titleformat{\subsubsection}[runin] %runin eliminates in dent
+{\vspace{0em}\bfseries}
+{}
+{0em}
+{}[\ --- ]
+
+\titlespacing{\subsubsection}
+{0em}{-2em}{.5em} %Spacing of argument 1 left margin. 2 space before title. 3 space after title
+
+\fancyhead{}
+
+\renewcommand{\maketitle}{%renames a command
+\begin {flushleft}{\fontsize{25pt}{33pt}\bfseries
+\theauthor}}
+
+
+
+% SHORTCUT COMMANDS
+\newcommand{\p}{{\it{Proof.}}}
+\newcommand{\z}{\vec{0}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\qed}{\hfill \begin{flushright}$\square$\end{flushright}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\hf}{\hfill}
+
+
+
+
+
+%\rfoot{I made this r\'esum\'e with {\LaTeX}!}
+
+\rhead{Introduction to Combinatorics — Math 465}
+\renewcommand{\headrule}{\dotfill}
+
+
+\begin{document}
+
+\author{Graph Theory Exam Notes}
+\date{\today}
+\fancyhead{}
+\fancyhead[RO,RE]{Harry Centner — Prof. Terrence George — Exam One}
+
+% \setbeamersize{text margin top=10mm}
+\maketitle
+
+\vspace{.7em} % adds a vertical space
+
+\large{hcentner@umich.edu \hfill Harry Centner} \\
+\hfill Professor Terrence George 
+
+
+\end{flushleft}
+
+\vspace{-1em}
+
+\section{Graph Basics}
+\begin{center} \end{center}
+\vspace{-1em}
+
+	\subsection{Definitions}
+	\begin{center} \end{center}
+	\begin{tcolorbox}
+	\textbf{Simple Graph} \\
+	\null \quad A simple graph is one with no multiple edges or loops. \\ 
+	
+	\textbf{Walk} \\
+	\null \quad A walk is an ordered set of vertices in which any two contiguous vertices are adjacent.  \\
+	
+	\textbf{Path} \\
+	\null \quad A path is a walk with no repeated vertices.  \\
+	\null \quad  $\{$paths of $G$$\} \subseteq \{$walks of $G\}$. \\
+	
+	\textbf{Clique} \\
+	\null \quad A clique is a subset of vertices in which any two vertices are non-adjacent. Equivalently, \\
+	\null \quad a clique is a $K_n$ subgraph of $G$. The clique number $\omega(G)$ is the largest clique size in $G$. \\ 
+	
+	\textbf{Independent Set} \\
+	\null \quad  An independent set is a subset of vertices such that no two vertices are adjacent. \\
+	\null \quad  The largest cardinality of an independent set in $G$ is denoted $\alpha(G)$ \\
+	
+	
+	\textbf{Vertex Cover} \\
+	\null \quad A vertex cover is a subset of vertices that contains at least one endpoint of every edge. \\
+	\null \quad  The minimum size of a vertex cover is $$|V| - \alpha(G)$$
+	\null \quad For any connected graph let $\rho(G)$ be the size of a minimum edge cover. Then
+	$$\rho(G) + \alpha(G) = |V|$$
+
+	\end{tcolorbox}
+	
+	
+	\subsection{The First Theorem of Graph Theory}
+	\begin{center} \end{center}
+	\begin{tcolorbox}
+	\text{\textbf{Binomial Definitions }  }\\
+	\text{Let $G =(V,E)$ be a graph. Then,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	\sum_{v \in V} \deg(v) = 2|E|
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	
+	
+	
+\newpage
+\section{Planarity}
+\begin{center} \end{center}
+\vspace{-1em}
+	
+	\subsection{Graph Characteristics}
+	\begin{center} \end{center}
+	\begin{tcolorbox}
+	\textbf{Zeroth Betti Number} \\
+	\null \quad denoted $b_0 = b_0(G)$ is the number of connected components of a graph. \\ 
+	
+	\textbf{First Betti Number} \\
+	\null \quad denoted $b_1= b_1(G)$ is equivalent to any of the following: 
+			\begin{itemize}
+			\item the maximal number of edges whose removal does not increase $b_0$
+			\item the number of edge deletions required to make $G$ a tree
+			\item the number of independent cycles in a graph \\
+			\end{itemize} 
+	\textbf{Other Betti Numbers} \\
+	\null \quad All other Betti Numbers of a graph are zero. $b_i(G) = 0 \quad \forall i \in \mathbb{N} \setminus \{0,1\}$
+	\end{tcolorbox}
+	
+
+	\begin{tcolorbox}
+	\textbf{Euler Characteristic}\\
+	\text{The Euler Characteristic of $G =(V,E)$ is given by}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	|V| - |E| = b_0 - b_1
+	\end{aligned}$
+	\end{center}
+	
+	It follows that any three of the following imply the remaining statement:
+	
+	\begin{enumerate}[label = (\roman*)]
+	\item $G$ is connected \hfill $b_0 =1$
+	\item $G$ is acyclic \hfill $b_1 =0$
+	\item $G$ has $n$ vertices \hfill $|V| =n$
+	\item $G$ has $n-1$ edges \hfill $|E| = n-1$
+	\end{enumerate}
+	
+	\end{tcolorbox}
+	
+	
+	\subsection{Famous Theorems}
+	\begin{center} \end{center}
+	\begin{tcolorbox}
+	\textbf{Euler's Formula}\\
+	\text{The Euler Characteristic of $G =(V,E)$ is given by}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	|V| - |E| + |F| &= b_0 + 1 \quad \text{(Planar Graph)} \\
+	|V| - |E| + |F| &= 2 \quad \text{(Planar, Connected Graph)}
+	\end{aligned}$ 
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\textbf{Corollaries}\\
+	The following inequality is true for all connected planar graphs:
+	$$|E| \le 3|V| - 6$$
+	The following inequality is true for all connected, triangle free planar graphs with $|V| \ge 3$:
+	$$|E| \le 2|V| -4$$
+	The folllowing inequality is true for the 1-skeleton of any polyhedra:
+	$$2|E| \ge 3|F|$$
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\textbf{Kuratowski's Theorem}\\
+	\text{Let $G =(V,E)$ be a simple graph, then}
+	
+	\hfill
+	\begin{center}
+	$G$ is planar is and only if $G$ contains no subgraph\\—or can be subdivided to be—
+	isomorphic to $K_5$ or $K_{3,3}$.
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	
+\section{Special Walks}
+\begin{center} \end{center}
+	
+	\subsection{Hamiltonicity}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	\text{Let $G =(V,E)$ be a graph. Then,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	K_n \text{ has } \frac{(n-1)!}{2}& \text{ Hamiltonian cycles}\\
+	 \text{A Hamiltonian graph} &\text{ has at least } {n-1 \choose 2} + 1  \text{ edges.}  
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Grinberg's Theorem}  }\\
+	Let $G =(V,E)$ be a planar graph. Let $C$ be a Hamiltonian cycle in $G$. Let $F_1$ denote the set of faces inside $C$, and $F_2$ outside. For a face $f \in F = F_1 \cup F_2$, let $b(f)$ denote the number of edges bounding $f$. Then,
+	$$\sum_{f \in F_1}(b(f) -2) = \sum_{f\in F_2}(b(f) -2) = |V|-2$$
+	
+	\end{tcolorbox}
+	
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Gray Codes}  }\\
+	A $k$-digit Gray Code is a Hamiltonian cycle in $Q_k$ the hypercube graph.
+	This corresponds to all $k$-digit binary strings listed cyclically such that contiguous strings differ by only one bit.
+	\end{tcolorbox}
+	
+	
+	
+	\subsection{Eulerian Walks}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Necessary Conditions for Graphs}  }\\
+	A connected graph $G$ has an Eulerian walk if and only if: \\
+	\begin{center} every vertex in $G$ has even degree \\ \quad OR \quad \\G has at most two vertices of odd degree  \end{center}
+	
+	\hfill
+	
+	A connected graph $G$ is Eulerian (has a closed trail) if and only if:
+	\begin{center}  every vertex in $G$ has even degree \end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Necessary Conditions for Digraphs}  }\\
+	A digraph $G = (V,E)$ without isolated vertices the following are equivalent: 
+	\begin{itemize}
+	 \item $G$ has a closed Eulerian walk (Each directed edge can be traversed exactly once)
+	 \item $G$ is connected (disregarding orientation) and indeg($v) =$ outdeg($v)$ for all $v \in V$
+	 \item For any vertices $u,v \in V$ there is a walk that starts at $u$ and ends at $v$ and\\
+	  indeg($v) =$ outdeg($v)$ for all $v \in V$
+	 \end{itemize}
+	\end{tcolorbox}
+	
+	
+\section{Colorings}
+\begin{center} \end{center}
+\vspace{-1em}
+
+	\subsection{Definitions}
+	\begin{center} \end{center}
+	
+	
+	\begin{tcolorbox}
+	\textbf{Proper Coloring} \\
+	\null \quad A proper coloring (coloring) of $G$ is a labelling of its vertices such that \\
+	\null \quad  all adjacent vertices have distinct labels. It follows that for any graph $G(V,E)$,\\ 
+	$$|E| \ge {\mathcal{X}(G)  \choose 2}$$
+	
+	\textbf{Chromatic Number} \\
+	\null \quad The chromatic number of a graph $\mathcal{X}(G)$ is the least number of colors needed to color $G$. \\
+
+	\end{tcolorbox}
+	
+	
+	\subsection{Bounds on the Chromatic Number}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Lower Bounds}  }\\
+	Let $G =(V,E)$ be a simple graph, let $\omega(G)$ be the clique number of $G$, and \\
+	let $\alpha(G)$ be the independence number of $G$. Then,
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	\mathcal{X}(G) &\ge \omega(G) \\
+	\mathcal{X}(G) &\ge \frac{|V|}{\alpha(G)}\\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Upper Bounds}  }\\
+	\text{Let $G =(V,E)$ be a graph which is neither complete nor an odd cycle. Then,}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	\mathcal{X}(G)  &\le \max_{v \in V} \deg(v) \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\subsection{Chromatic Polynomials}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	Let $G$ be a graph. Then $p_G: \mathbb{Z}_\ge \rightarrow \mathbb{Z}$ is defined by:
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	p_G(k) = \text{ the number of colorings of $G$ with $k$ colors }
+	\end{aligned}$
+	\end{center}
+	
+	\text{\textbf{Consequences}  }
+	\begin{enumerate}[label = (\roman*)]
+	\item The coefficient of $k^{n-1}$ in $p_G(k)$ is $-|E|$. 
+	\item $p_G(1) = 0$ if and only if $G$ has no edges.
+	\item $\mathcal{X}(G) = \min\{ k \ | \ p_G(k) \ne 0\}$
+	\end{enumerate}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Examples}  }\\
+	
+	\hfill
+	$\begin{aligned}
+	&\text{If $G$ is a forest with $c$ connected components, then} \quad &p_G(k) &=& k^c&(k-1)^{n-c} \\
+	&\text{If $G = C_4$, then} \quad &p_{C_4}(k) &=& k&(k-1)Jk^2-3k+3) \\
+	&\text{If $G$ has no edges, then} \quad &p_{C_4}(k) &=& k&^n \\
+	\end{aligned}$
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Recursive Formulas}  }\\
+	Let $G =(V,E)$ be a simple graph and $e \in E$ an edge. Then, \\
+	$G-e$ is the graph obtained from $G$ by deleting $e$.\\
+	$G/e$ is the graph obtained from $G$ by contracting $e$.\\
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	p_G(k) = p_{G-e}(k) - p_{G/e}(k)
+	\end{aligned}$
+	\end{center}
+	
+	\hfill
+	
+	Let $G \sqcup H$ be the disjoint union of two graphs $H$ and $G$. Then,
+	$$p_{G \sqcup H}(k) =p_G(k)  \cdot p_H(k)$$ 
+	
+	\hfill
+	
+	Let $G + H$ be the join of two graphs $H$ and $G$. Then,
+	$$p_{G +H}(k) = \sum_a \sum_b \hat{p}_{G}(a)\hat{p}_H(b) {a+b \choose a} {k \choose a+b}$$
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Using Exactly $k$ Colors}  }\\
+	Let $G =(V,E)$ be a simple graph and let $\hat{p}_G(k)$ denote the number of proper colorings of $G$ using exactly $k$ colors.
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	p_G(k) = \sum_{a= 0}^{|V|} \hat{p}_G(k) { k \choose a}
+	\end{aligned}$
+	\end{center}
+	\hfill note that $\hat{p}_G(k) \ne 0 \implies \mathcal{X}(G) \le a \le |V|$
+	
+	Note that $ \hat{p}_G(k)$ is the leftmost entry in the $a$-th row \\ of the difference table for the sequence $b = p_G(0), p_G(1), \dots$
+	\end{tcolorbox}
+	
+	
+	
+
+\section{Digraphs \& Flows}
+\begin{center} \end{center}
+\vspace{-1em}
+
+	\subsection{Definitions}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Transportation Network}}\\
+	\text{Let $G =(V,E)$ be a graph. Then, }
+
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Flow}}\\
+	\text{A flow in a transportation network is a function $f: E\rightarrow \R$ that satisfies two conditions,}
+	\begin{enumerate}
+	\item feasibility: $$0 \le f(e) \le c(e) \quad \forall e\in E$$
+	\item conservatiton law: $$\sum_{\bullet\xrightarrow{e}v}f(e) = \sum_{v\xrightarrow{e}\bullet}f(e) \quad \forall v\in V \setminus\{s,t\} $$
+	\end{enumerate}
+	\end{tcolorbox}
+
+
+
+	\begin{tcolorbox}
+	\text{\textbf{Max-Flow Min-Cut Theorem}  }
+	\begin{center}
+	The maximum value of a flow in a transportation network\\
+	 is equal to the minimum capacity of a cut:
+	 \end{center}
+	 
+	$$\max_f |F| = \min_{(X,Y)} c(X,Y)$$
+	\end{tcolorbox}
+	
+	
+	\subsection{Matchings}
+	\begin{center} \end{center}
+	
+	
+	
+	
+\section{Spicy Extras}
+\begin{center} \end{center}
+\vspace{-1em}
+
+	\subsection{Pigeon Hole Principle}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Statement}  }
+	\begin{center}
+	If $|A| > |B|$, there are no injections $f: A \rightarrow B$.
+	 \end{center}
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Corollaries}  }
+	\begin{enumerate}[label = (\roman*)]
+	\item Congruence classes
+	\item 
+	\end{enumerate}
+	\end{tcolorbox}
+	
+	
+	
+	\subsection{Posets}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Definition}  }\\
+	A partially ordered set (or poset) $P$ is a set endowed with a binary relation denoted $\le$, that satisfies three conditions:
+	\begin{enumerate}[label = (\roman*)]
+	\item reflexivity: $$\forall x\in P, \quad x \le x$$
+	\item antisymmetricity: $$x \le y \wedge y \le x \implies x = y$$
+	\item transitivity: $$x \le y \wedge y \le z \implies x \le z$$
+	\end{enumerate}
+	\end{tcolorbox}
+
+	
+	\subsection{Combinatorial Reciprocity Theorems}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Acyclic Orientations}}\\
+	The number of directed graphs obtained by orienting the edges of $G =(V,E)$ \\
+	without creating a directed cycle is
+	$$ao(G) = (-1)^{|V|} \cdot p_G(-1)$$
+	And defined by the recursion
+	$$ao(G) = ao(G-e) + ao(G/e)$$
+	
+	Note that if $G$ is a tree, then $ao(G) = 2^{|E|}$ \\
+	 If $G = C_n$ is a cycle, then $ao(G) = 2^{n} -2$ \\
+	 If $G = K_n$, then $ao(G) = n!$ \\
+	\end{tcolorbox}
+	
+	\subsection{Automorphisms}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Acyclic Orientations}}\\
+	$K_n$ 
+	\end{tcolorbox}
+
+	
+	
+\end{document}

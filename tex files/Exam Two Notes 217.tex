@@ -1,0 +1,462 @@
+\documentclass[12pt]{article}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=.75in]{geometry}
+\usepackage{pagecolor,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{lmodern}
+\pagecolor{white}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{tcolorbox}
+
+\linespread{1}
+
+\pagestyle{fancy}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\titleformat{\section}%[frame]
+{\vspace{-.15in}\LARGE\flushleft} %formatting
+{} %numbering {\thesection}
+{.0em} %distance between number and section title
+{\bfseries \uppercase}[\titlerule] %Any code you want after gap before title
+
+\titleformat{\subsection}
+{\vspace{-.4em}\Large\bfseries}
+{\hspace{0em}}%$\bullet$}
+{0em}
+{\vspace{.3em}}[\vspace{-1.2em}]
+
+
+\titleformat{\subsubsection}[runin] %runin eliminates in dent
+{\vspace{.1em}\bfseries}
+{}
+{0em}
+{}[\ --- ]
+
+\titlespacing{\subsubsection}
+{0em}{-2em}{.5em} %Spacing of argument 1 left margin. 2 space before title. 3 space after title
+
+\fancyhead{}
+
+\renewcommand{\maketitle}{%renames a command
+\begin {flushleft}{\fontsize{25pt}{33pt}\bfseries
+\theauthor}}
+
+
+
+% SHORTCUT COMMANDS
+\newcommand{\p}{{\it{Proof.}}}
+\newcommand{\z}{\vec{0}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\qed}{\hfill \begin{flushright}$\square$\end{flushright}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\hf}{\hfill}
+
+
+
+
+
+%\rfoot{I made this r\'esum\'e with {\LaTeX}!}
+
+\rhead{Linear Algebra — Math 217}
+\renewcommand{\headrule}{\dotfill}
+
+
+\begin{document}
+
+\author{Math 217 Exam Two Notes}
+\date{\today}
+\fancyhead{}
+\fancyhead[RO,RE]{Harry Centner — Prof. Karen Smith 009 — Exam Two}
+
+% \setbeamersize{text margin top=10mm}
+\maketitle
+
+\vspace{.7em} % adds a vertical space
+
+\large{hcentner@umich.edu \hfill Harry Centner} \\
+\hfill Professor Karen Smith 009
+
+
+\end{flushleft}
+
+\vspace{-2em}
+
+\section{Coordinates}
+\begin{center} \end{center}
+	\subsection{Coordinates Matrices}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 4.3.2}  }\\
+	\text{The $\mathfrak{B}$-matrix of $T$} 
+	\begin{center}
+	$\begin{aligned}
+	\text{[\,}T\text{]\,}_\mathfrak{B} &=  \begin{bmatrix}  |&| & & | \\ [\,T(\vec{v}_1)]\,_\mathfrak{B} & [\,T(\vec{v}_2)]\,_\mathfrak{B}  & \cdots & [\,T(\vec{v}_n)]\,_\mathfrak{B}  \\ |&|& & |\end{bmatrix} \\
+	[\,T]\,_\mathfrak{B} &= S_{\mathfrak{U}\rightarrow\mathfrak{B}} [\,T]\,_\mathfrak{U} S_{\mathfrak{B}\rightarrow\mathfrak{U}}  
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 4.3.2}  }\\
+	\text{Change of Basis Matrix $S_{\mathfrak{U}\rightarrow\mathfrak{B}}$}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	S_{\mathfrak{U}\rightarrow\mathfrak{B}} & = (S_{\mathfrak{B}\rightarrow\mathfrak{U}})^{-1} \\
+	S_{\mathfrak{U}\rightarrow\mathfrak{B}} &=  \begin{bmatrix}  |&| & & | \\ [\, \vec{u}_1]\,_\mathfrak{B} & [\,\vec{u}_2]\,_\mathfrak{B}  & \cdots & [\,\vec{u}_n]\,_\mathfrak{B}  \\ |&|& & |\end{bmatrix} \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 4.3.4}  }\\
+	\text{Change of Basis in a subspace of $\R^n$}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	  \begin{bmatrix}  |&| & &| \\ \vec{b}_1 & \vec{b}_2 & \cdots & \vec{b}_n \\   |&| & &| \end{bmatrix}=\begin{bmatrix}  |&| & &| \\ \vec{u}_1 & \vec{u}_2 & \cdots & \vec{u}_n \\   |&| & &| \end{bmatrix}S_{\mathfrak{B}\rightarrow\mathfrak{U}} \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	\subsection{Coordinate Theorems}
+	\begin{center} \end{center}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Worksheet 16 Problem 3} }\\
+	\text{Suppose that $\mathfrak{U} = (\vec{u}_1, \vec{u}_2 ,...,\vec{u}_n)$ is an orthonormal ordered basis for $\R^n$}
+	\begin{center}
+	$\begin{aligned}
+	\text{[\,}\vec{x} \ \text{]\,}_\mathfrak{U}= \begin{bmatrix} \vec{x} \cdot \vec{u}_1 \\  \vec{x} \cdot \vec{u}_2 \\ \vdots \\ \vec{x} \cdot \vec{u}_n \\  \end{bmatrix}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+
+
+\pagebreak
+\section{Orthogonality}
+\begin{center} \end{center}
+
+	\subsection{Orthogonal Complement Theorems}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.4.1} }
+	\begin{center}
+	$\begin{aligned}
+	(\operatorname{im}A)^\perp &= \operatorname{ker}(A^T) \\
+	\operatorname{im}(A^T) &= (\operatorname{ker}A)^\perp
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.1.8}  }\\
+	\text{If V is a subspace, then}
+	\begin{center}
+	$\begin{aligned}
+	V^\perp  \text{ is a } & \text{subspace} \\
+	(V^\perp)^\perp &= V \\
+	n = \operatorname{dim}(V)  &+ \operatorname{dim}(V^\perp)  \\
+	V \cap V^\perp &= \z \\
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Homework 7 Problem 4}  }\\
+	\text{If V is a subspace, then}
+	\begin{center}
+	$\begin{aligned}
+	V^\perp + W^\perp = (V \cap W)^\perp \\
+	(V + W)^\perp = V^\perp \cap W^\perp 
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\subsection{Orthogonal Matrix Characterizations}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.3.8} }
+	\begin{center}
+	$\begin{aligned}
+	A^TA&=I_n \\
+	A ^{-1} &= A^T \\
+	|| A\vec{x} || &= || \vec{x}|| \\
+	(A\vec{x}) \cdot(A\vec{y}) &= \vec{x} \cdot \vec{y} \\
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.3.4} } \\
+	\text{if $A$ and $B$ are orthogonal matrices}
+	\begin{center}
+	$\begin{aligned}
+	AB & \text{ is orthogonal}\\
+	A^{-1} & \text{ is orthogoanl}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\pagebreak
+	\subsection{Graham Schmidt}
+	\begin{center} \end{center}
+
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.2.1} }\\
+	\text{Construct an orthonormal basis $(\vec{u}_1, . . ., \vec{u}_n)$} \\
+	\text{from any basis $(\vec{v}_1,  . . .,\vec{v}_n)$}
+	\begin{center}
+	$\begin{aligned}
+	\vec{u}_j &= \frac{\vec{v}_j^\perp}{|| \vec{v}_j^\perp ||}\\
+	\vec{v}_j^\perp = \vec{v}_j - (\vec{u}_1 \cdot \vec{v}_j)\vec{u}_1& - \cdots - (\vec{u}_{j-1} \cdot \vec{v}_j{j})\vec{u}_{j-1} \\
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+
+	\subsection{QR Factorization}
+	\begin{center} \end{center}
+	
+		\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.2.2}  }\\
+	\text{$QR$ factorization of a matrix $M$}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	M  &= &Q \quad \quad \quad & \quad \quad \quad  \quad \quad \quad \quad R\\
+	  \begin{bmatrix}  |&| & &| \\ \vec{b}_1 & \vec{b}_2 & \cdots & \vec{b}_n \\   |&| & &| \end{bmatrix} &= & \begin{bmatrix}  |&| & &| \\ \vec{u}_1 & \vec{u}_2 & \cdots & \vec{u}_n \\   |&| & &| \end{bmatrix}   & \begin{bmatrix} || \vec{v}_1 || & \vec{u}_1  \cdot \vec{v}_2 & \vec{u}_1  \cdot \vec{v}_3 & \cdots & \vec{u}_1  \cdot \vec{v}_n \\   0 &|| \vec{v}_2^\perp ||   &  \vec{u}_2  \cdot \vec{v}_3 & \cdots &  \vec{u}_2  \cdot \vec{v}_n \\ 0 & 0 &|| \vec{v}_3^\perp ||   & \cdots &  \vec{u}_3  \cdot \vec{v}_n \\ \vdots&\vdots&\vdots&\ddots&\vdots \\ 0 & 0 & 0 & \cdots & || \vec{v}_n^\perp ||  \end{bmatrix}\\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+
+\pagebreak
+\section{Dot Product \& Projections}
+\begin{center} \end{center}
+	
+	
+	\subsection{Dot Product Theorems}
+	\begin{center} \end{center}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.1.1} }
+	\begin{center}
+	$\begin{aligned}
+	|| \vec{v} || &= \sqrt{\vec{v} \cdot \vec{v}} \\ 
+	\vec{v} \cdot \vec{w} &= 0  \iff \vec{v} \perp \vec{w} \\
+	\vec{u} \cdot \vec{u} & = 1 \iff \vec{u} \text{ is a unit vector}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.3.6} }
+	\begin{center}
+	$\begin{aligned}
+	A\vec{v} \cdot \vec{w} &= \vec{v} \cdot A^T\vec{w} 
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.1.9 - 5.1.12} }
+	
+\hfill	
+	\begin{center}
+	$\begin{aligned}
+	||  \vec{x} +  \vec{y}||^2 = || \vec{x}||^2 + || \vec{y}||^2 \quad &\textbf{Pythagorean Theorem} \text{ *for orthogonal vectors} \\
+	|| \text{proj}_V\vec{x}|| \leq || \vec{x}||\quad &\textbf{Magnitude of $ \text{proj}_V\vec{x}$} \\
+	| \vec{x} \cdot \vec{y}| \leq || \vec{x}|| \  || \vec{y}||  \quad &\textbf{Cauchy-Schwarz Inequality} \\
+	\cos \theta = \frac{\vec{x} \cdot \vec{y}}{|| \vec{x} ||\ || \vec{y} ||} \quad &\textbf{Angle between two vecors} \\
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\subsection{Projections}
+	\begin{center} \end{center}
+		
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.1.5}}\\
+	\text{If $V$ is a subspace of $\R^n$ with orthonormal basis $\mathfrak{U} = (\vec{u}_1, \vec{u}_2 ,...,\vec{u}_n)$ then}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	\text{proj}_V \vec{x} = (\vec{u}_1 \cdot\vec{x})\vec{u}_1 + (\vec{u}_2 \cdot\vec{x})\vec{u}_2 + \cdots + (\vec{u}_n \cdot\vec{x})\vec{u}_n
+	\end{aligned} $
+	\end{center}
+	\hfill \text{for all $\vec{x}\in\R^n$}
+	\end{tcolorbox}
+	
+	
+	
+	\subsection{Orthogonal Projection}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.1.5}}\\
+	\text{If $V$ is a subspce of $\R^n$ with orthogonal basis $\mathfrak{B} = (\vec{v}_1, \vec{v}_2 ,...,\vec{v}_n)$ then}
+	\begin{center}
+	$\begin{aligned}
+	\text{proj}_V \vec{x} = \frac{\vec{v}_1 \cdot \vec{x}}{\vec{v}_1 \cdot \vec{v}_1}\vec{v}_1 + \frac{\vec{v}_2 \cdot \vec{x}}{\vec{v}_2\cdot \vec{v}_2}\vec{v}_2 + \cdots + \frac{\vec{v}_n \cdot \vec{x}}{\vec{v}_n \cdot \vec{v}_n}\vec{v}_n \end{aligned} $
+	\end{center}
+	\hfill \text{for all $\vec{x}\in\R^n$}
+	\end{tcolorbox}
+	
+	
+	\pagebreak
+	\subsection{Matrix of an Orthogonal Projection}
+	\begin{center} \end{center}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 4.3.4}  }\\
+	\text{Projection onto a subspace $V \subseteq \R^n$ with orthonormal basis $\mathfrak{U} = (\vec{u}_1, \vec{u}_2 ,...,\vec{u}_d)$}\\
+	\text{ and basis $\mathfrak{B} = (\vec{b}_1, \vec{b}_2 ,...,\vec{b}_d)$}
+	
+	\hfill
+	\begin{center}
+	$\begin{aligned}
+	 P &= QQ^T \quad \text{where} \quad Q &=  \begin{bmatrix}  |&| & &| \\ \vec{u}_1 & \vec{u}_2 & \cdots & \vec{u}_d \\   |&| & &| \end{bmatrix} \\
+	 P &= A(A^TA)^{-1}A^T  \quad \text{where} \quad A &= \begin{bmatrix}  |&| & &| \\ \vec{b}_1 & \vec{b}_2 & \cdots & \vec{b}_d \\   |&| & &| \end{bmatrix} \\
+	\end{aligned}$
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.4.6}}\\
+	\text{ $A\vec{x} = \vec{b}$ has the unique solution}
+	\begin{center}
+	$\begin{aligned}
+	\vec{x}^*=(A^TA)^{-1}A^T\vec{b}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+
+	
+\pagebreak
+\section{Transpose  \& Least Squares}
+\begin{center} \end{center}
+	\subsection{Transpose Theorems}
+\vspace{1em}
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.3.9} }
+	\begin{center}
+	$\begin{aligned}
+	(A + B)^T & = A^T + B^T \\
+	(kA)^T &= kA^T   \\
+	(AB)^T &= B^TA^T  \\
+	\operatorname{rank}(A) &= \operatorname{rank}(A^T) \\
+	(A^T)^{-1} &= (A^{-1})^T
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Homework 8 Problem 3} }
+	\begin{center}
+	$\begin{aligned}
+	\operatorname{ker}(A) &= \operatorname{ker}(A^TA) \\
+	\operatorname{im }(A) &= \operatorname{im}(AA^T) \\
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\subsection{Least Squares Definition}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.4.5}}\\
+	\text{ $A\vec{x} = \vec{b}$ has the least-squares solutions of the consistent system}
+	\begin{center}
+	$\begin{aligned}
+	A^T A \vec{x} = A^T \vec{b}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.4.6}}\\
+	\text{If ker($A$) = $\{\z\}$, then linear system}
+	\hfill
+	
+	\text{ $A\vec{x} = \vec{b}$ has the unique solution}
+	\begin{center}
+	$\begin{aligned}
+	\vec{x}^*=(A^TA)^{-1}A^T\vec{b}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+	
+	\subsection{Least Squares Theorems}
+	\begin{center} \end{center}
+	
+	\begin{tcolorbox}
+	\text{\textbf{Book Theorem 5.4.6}}\\
+	\text{If ker($A$) = $\{\z\}$, then linear system}
+	\hfill
+	
+	\text{ $A\vec{x} = \vec{b}$ has the unique solution}
+	\begin{center}
+	$\begin{aligned}
+	\vec{x}^*=(A^TA)^{-1}A^T\vec{b}
+	\end{aligned} $
+	\end{center}
+	\end{tcolorbox}
+
+	
+\pagebreak
+\section{Geometric Transformations}
+\begin{center} \end{center}
+	\subsection{Projections}
+	\begin{center} \end{center}
+	
+	
+	
+	\subsection{Rotations}
+	\begin{center} \end{center}
+	
+	\subsection{Reflections}
+	\begin{center} \end{center}
+
+
+
+
+	
+	
+	
+\end{document}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
